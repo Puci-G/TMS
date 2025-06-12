@@ -20,11 +20,14 @@ export default function Navigation() {
           <Link to="/teams">Teams</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/profile">Profile</Link>
-          <button onClick={handleLogout}>Logout</button>
+      
           { canManage() && <Link to="/teams/new">New Team</Link> }
           { canManage() && <Link to="/projects/new">New Project</Link> }
           { canManage() && <Link to="/users">Users</Link> }
-        </>
+<div style={{display: "flex", justifyContent: "flex-end"}}>
+  <button onClick={handleLogout}>Logout</button>
+</div>
+     </>
       ) : (
         <>
           <Link to="/login">Login</Link>
