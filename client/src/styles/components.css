@@ -1,0 +1,5 @@
+.table { width:100%; border-collapse:collapse; }
+.table th,.table td{ border:1px solid #ddd; padding:.5rem; }
+
+.modal-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.4); display:flex; align-items:center; justify-content:center; }
+.modal{ background:#fff; padding:1rem 2rem; border-radius:6px; min-width:240px; }
