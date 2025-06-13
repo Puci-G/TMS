@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
+import { Link } from "react-router-dom";
 import LoadingSpinner from '../components/LoadingSpinner';
 import { formatDate } from '../services/helpers';
+import { canManage } from '../services/role';
 
 export default function Teams() {
   const [teams, setTeams] = useState(null);
@@ -17,6 +19,7 @@ export default function Teams() {
   return (
     <section>
       <h2>Teams</h2>
+        <button> { canManage() && <Link to={`/teams/new`}>+ Krijo ekip</Link> }</button>
       <table>
         <thead>
           <tr>
@@ -24,6 +27,9 @@ export default function Teams() {
             <th>Leader</th>
             <th>Members</th>
             <th>Created</th>
+            <th>Action</th>
+
+            
           </tr>
         </thead>
         <tbody>
@@ -33,6 +39,7 @@ export default function Teams() {
               <td>{t.leader?.username}</td>
               <td>{t.members.length}</td>
               <td>{formatDate(t.createdAt)}</td>
+               { canManage() && <Link to={`/teams/${t._id}/edit`}>✏️ Edit</Link> }
             </tr>
           ))}
         </tbody>

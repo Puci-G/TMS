@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Header      from './components/Header';
 import Status      from './components/Status';
-
 import Navigation  from './components/Navigation';
 import Footer      from './components/Footer';
 
@@ -38,13 +37,12 @@ export default function App() {
 
       <main className="main-content">
         <Routes>
-
-          {/* public routes */}
+          {/* Public routes */}
           <Route path="/"         element={<Home />} />
           <Route path="/login"    element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* authenticated routes */}
+          {/* Authenticated routes */}
           <Route
             path="/dashboard"
             element={<PrivateRoute><Dashboard /></PrivateRoute>}
@@ -61,50 +59,67 @@ export default function App() {
             path="/profile"
             element={<PrivateRoute><Profile /></PrivateRoute>}
           />
+          <Route
+            path="/profile/:id"
+            element={
+              <PrivateRoute>
+                <UserProfile />
+              </PrivateRoute>
+            }
+          />
 
-          {/* manager / admin routes */}
+          {/* Manager/Admin only routes */}
           <Route
             path="/users"
             element={
-              <Protected allow={['admin', 'manager']}>
-                <Users />
-              </Protected>
+              <PrivateRoute>
+                <Protected allow={['admin', 'manager']}>
+                  <Users />
+                </Protected>
+              </PrivateRoute>
             }
           />
           <Route
             path="/teams/new"
             element={
-              <Protected allow={['admin', 'manager']}>
-                <CreateTeam />
-              </Protected>
+              <PrivateRoute>
+                <Protected allow={['admin', 'manager']}>
+                  <CreateTeam />
+                </Protected>
+              </PrivateRoute>
             }
           />
           <Route
             path="/teams/:id/edit"
-            element={<EditTeam />}   
+            element={
+              <PrivateRoute>
+                <Protected allow={['admin', 'manager']}>
+                  <EditTeam />
+                </Protected>
+              </PrivateRoute>
+            }
           />
           <Route
             path="/projects/new"
             element={
-              <Protected allow={['admin', 'manager']}>
-                <CreateProject />
-              </Protected>
+              <PrivateRoute>
+                <Protected allow={['admin', 'manager']}>
+                  <CreateProject />
+                </Protected>
+              </PrivateRoute>
             }
           />
           <Route
             path="/projects/:id/edit"
-            element={<EditProject />}
-          />
-              <Route
-            path="/profile/:id"
             element={
-          <PrivateRoute>
-        <UserProfile />
-      </PrivateRoute>
-           }
+              <PrivateRoute>
+                <Protected allow={['admin', 'manager']}>
+                  <EditProject />
+                </Protected>
+              </PrivateRoute>
+            }
           />
         </Routes>
-       
       </main>
 
       <Footer />

@@ -375,19 +375,124 @@ table tbody tr:nth-child(even):hover td,
     padding: 1.5rem;
   }
   
-  .table {
+  .table,
+  table {
     font-size: 0.9rem;
+    border-radius: 6px;
   }
   
   .table th,
-  .table td {
-    padding: 0.5rem;
+  .table td,
+  table th,
+  table td {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .table-responsive {
+    border-radius: 6px;
   }
   
   .modal {
     margin: 1rem;
     min-width: auto;
   }
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Status and priority badges */
+.status-badge,
+.priority-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-planning { background: #e3f2fd; color: #1976d2; }
+.status-in-progress { background: #fff3e0; color: #f57c00; }
+.status-review { background: #f3e5f5; color: #7b1fa2; }
+.status-completed { background: #e8f5e8; color: #388e3c; }
+.status-cancelled { background: #ffebee; color: #d32f2f; }
+
+.priority-low { background: #e8f5e8; color: #388e3c; }
+.priority-medium { background: #fff3e0; color: #f57c00; }
+.priority-high { background: #ffebee; color: #d32f2f; }
+.priority-urgent { background: #f3e5f5; color: #7b1fa2; }
+
+/* Progress bar */
+.progress-bar {
+  position: relative;
+  width: 100px;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #66bb6a);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #333;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Enhanced forms */
+.auth-section label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.auth-section textarea {
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.auth-section textarea:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.auth-section select {
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.2s ease;
+}
+
+.auth-section select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
 }
 
 /* Utility classes */
