@@ -34,9 +34,13 @@ export default function EditTeam() {
   const localUser = JSON.parse(localStorage.getItem('user') || '{}');
   const allowed =
     ['admin','manager'].includes(getRole()) ||
-    team.leader._id === localUser.id;
+    team.leader._id === localUser._id;
 
-  if (!allowed) return <p>403 – not allowed to edit this team</p>;
+    console.log("leader" ,team.leader._id);
+        console.log("userid", localUser._id);
+
+
+  if (!allowed) return <p>Not allowed to edit this team</p>;
 
   /* Handlers */
   const onChange = e =>

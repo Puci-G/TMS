@@ -93,9 +93,7 @@ export default function App() {
             path="/teams/:id/edit"
             element={
               <PrivateRoute>
-                <Protected allow={['admin', 'manager']}>
                   <EditTeam />
-                </Protected>
               </PrivateRoute>
             }
           />

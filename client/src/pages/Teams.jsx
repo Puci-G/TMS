@@ -27,9 +27,7 @@ export default function Teams() {
             <th>Leader</th>
             <th>Members</th>
             <th>Created</th>
-            <th>Action</th>
-
-            
+            <th>Action</th>            
           </tr>
         </thead>
         <tbody>
@@ -39,7 +37,7 @@ export default function Teams() {
               <td>{t.leader?.username}</td>
               <td>{t.members.length}</td>
               <td>{formatDate(t.createdAt)}</td>
-               { canManage() && <Link to={`/teams/${t._id}/edit`}>✏️ Edit</Link> }
+               <Link to={`/teams/${t._id}/edit`}>✏️ Edit</Link> 
             </tr>
           ))}
         </tbody>

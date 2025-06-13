@@ -27,7 +27,7 @@ export default function Projects() {
             <th>Team</th>
             <th>Status</th>
             <th>Deadline</th>
-                <th>Actions</th>         
+            <th>Actions</th>         
 
           </tr>
         </thead>

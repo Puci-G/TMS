@@ -8,11 +8,11 @@ const role  = require('../middleware/role');
  router.get('/:id', auth,                                    teamController.getTeamById);
 // admins & managers can create / edit / delete
 router.post('/',                auth, role('admin','manager'), teamValidation, teamController.createTeam);
-router.put('/:id',              auth, role('admin','manager'), teamController.updateTeam);
+router.put('/:id',              auth, teamController.updateTeam);
 router.delete('/:id',           auth, role('admin','manager'), teamController.deleteTeam);
 
 // member management (still admins & managers only)
-router.post('/:id/members',     auth, role('admin','manager'), teamController.addMember);
+router.post('/:id/members',     auth, teamController.addMember);
 router.delete('/:id/members/:userId', auth, role('admin','manager'), teamController.removeMember);
 
 module.exports = router;
